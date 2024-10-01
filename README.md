@@ -56,7 +56,7 @@ docker-compose up -d
 
 You can test the APIs using the provided Postman collection that is included in the project. Follow these steps:
 
-1. Import the `eshop-postman-collection.json` file into Postman.
+1. Import the `carrefour-eshop.postman_collection.json` file into Postman.
 2. Ensure the Spring Boot application is running locally on `http://localhost:8080`.
 3. Use the collection to send requests to the different endpoints, such as adding items to the cart or placing an order.
 
@@ -65,7 +65,7 @@ You can test the APIs using the provided Postman collection that is included in 
 The API endpoints are documented using Swagger. Once the application is running, you can access the API documentation at:
 
 ```
-http://localhost:8080/swagger-ui.html
+http://localhost:8080/api-docs/
 ```
 
 ## Future Enhancements
