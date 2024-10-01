@@ -1,3 +1,4 @@
+
 # 🛒 Online Shopping - Reactive eShop
 
 ## Overview
@@ -20,19 +21,56 @@ The application is designed with a reactive architecture to handle high concurre
 
 ## Getting Started
 
-1. **Prerequisites**: Java 21, MongoDB, Kafka.
-2. **Build**: 
-   ```bash
-   mvn clean install
-   ```
-3. **Run**:
-   ```bash
-   mvn spring-boot:run
-   ```
-4. **API Access**: `http://localhost:8080/`.
+### Prerequisites
+
+Ensure you have the following installed:
+- **Java 21**
+- **Maven**
+- **Docker & Docker Compose**
+
+### Build
+
+To build the project, run the following command:
+
+```bash
+mvn clean install
+```
+
+### Run the Application
+
+Start the Spring Boot application using:
+
+```bash
+mvn spring-boot:run
+```
+
+### Running Kafka Locally with Docker Compose
+
+To run Kafka and Zookeeper locally, ensure you have the Docker file set up in your project. Then, use the following command:
+
+```bash
+docker-compose up -d
+```
+
+### Testing with Postman
+
+You can test the APIs using the provided Postman collection that is included in the project. Follow these steps:
+
+1. Import the `eshop-postman-collection.json` file into Postman.
+2. Ensure the Spring Boot application is running locally on `http://localhost:8080`.
+3. Use the collection to send requests to the different endpoints, such as adding items to the cart or placing an order.
+
+### API Documentation
+
+The API endpoints are documented using Swagger. Once the application is running, you can access the API documentation at:
+
+```
+http://localhost:8080/swagger-ui.html
+```
 
 ## Future Enhancements
 
-- Caching layer (e.g., Redis).
-- CI/CD pipeline.
-- Containerization using Docker and Kubernetes.
+- Implement a caching layer (e.g., Redis).
+- Setup a CI/CD pipeline for automated testing and deployment.
+- Containerization using Docker and deployment on Kubernetes.
+
