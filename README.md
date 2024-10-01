@@ -8,6 +8,7 @@ This project implements a reactive online shopping platform using:
 - **Spring WebFlux**: For non-blocking, asynchronous HTTP requests.
 - **MongoDB**: As the reactive NoSQL database.
 - **Kafka**: For event-driven communication between services.
+- **Spring Security**: For securing the application using JWT-based authentication.
 
 ## Architecture
 
@@ -18,6 +19,21 @@ The application is designed with a reactive architecture to handle high concurre
 1. **Cart Management**: Add or remove products from the cart.
 2. **Order Management**: Confirm and track order status.
 3. **Inventory Management**: Reflect changes based on user actions.
+4. **Security**: JWT-based authentication to secure API endpoints.
+5. 
+## Security Implementation
+
+The application uses **Spring Security** for authentication and authorization. The choice of Spring Security is based on its compatibility with reactive applications using Spring WebFlux and its flexibility in configuring different security mechanisms.
+
+### JWT Authentication
+
+- The application generates a JWT (JSON Web Token) for user authentication.
+- The JWT is created when a user accesses the `GET /api/v1/auth` endpoint with valid credentials (username and password).
+- Once the JWT is issued, it should be included in the `Authorization` header of subsequent API requests in the format: `Bearer <JWT_TOKEN>`.
+
+### How JWT is Generated
+
+To generate a JWT, the user needs to send a GET request to the `/api/v1/auth` endpoint with the `username` and `password` as query parameters.
 
 ## Getting Started
 
@@ -58,7 +74,7 @@ You can test the APIs using the provided Postman collection that is included in 
 
 1. Import the `carrefour-eshop.postman_collection.json` file into Postman.
 2. Ensure the Spring Boot application is running locally on `http://localhost:8080`.
-3. Use the collection to send requests to the different endpoints, such as adding items to the cart or placing an order.
+3. Use the collection to send requests to the different endpoints, such as adding items to the cart, placing an order, or generating a JWT token using the /api/v1/auth endpoint.
 
 ### API Documentation
 
