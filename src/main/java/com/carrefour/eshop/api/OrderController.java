@@ -3,12 +3,12 @@ package com.carrefour.eshop.api;
 import com.carrefour.eshop.dto.OrderDto;
 import com.carrefour.eshop.mapper.OrderMapper;
 import com.carrefour.eshop.service.OrderService;
-import java.util.List;
-import org.springframework.web.bind.annotation.GetMapping;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -23,18 +23,16 @@ public class OrderController {
     this.orderMapper = orderMapper;
   }
 
+  @Operation(summary = "Place a new order", description = "Creates a new order and returns the details of the placed order.")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Order placed successfully"),
+      @ApiResponse(responseCode = "400", description = "Bad request, invalid input data"),
+      @ApiResponse(responseCode = "500", description = "Internal server error, order could not be placed")
+  })
   @PostMapping
   public Mono<OrderDto> placeOrder() {
-    return orderService.placeOrder().map(orderMapper::toDto);
-  }
-
-  @GetMapping("/{orderCode}")
-  public Mono<OrderDto> getOrder() {
-    return Mono.just(OrderDto.builder().build());
-  }
-
-  @GetMapping("/")
-  public Flux<OrderDto> getAllOrders() {
-    return Flux.fromIterable(List.of(OrderDto.builder().build()));
+    return orderService.placeOrder()
+        .map(orderMapper::toDto);
   }
 }
+
