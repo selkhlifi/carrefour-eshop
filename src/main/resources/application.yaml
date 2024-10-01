@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: carrefour-eshop
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration # Disables Spring generated Password
+  main:
+    banner-mode: 'off'
+  webflux:
+    base-path: /
+  jackson:
+    default-property-inclusion: non_null
+  codec:
+    max-in-memory-size: 15MB
+  data:
+    mongodb:
+      database: eshop
+      port: 27018
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: eshop-group
+      auto-offset-reset: earliest
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    listener:
+      missing-topics-fatal: false
+#  r2dbc:
+#    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    username: sa
+#    password:
+#  datasource:
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#  h2:
+#    console:
+#      enabled: true
+#  liquibase:
+#    change-log: classpath:db/changelog/db.changelog-master.sql
+#    driver-class-name: org.h2.Driver
+#    user: sa
+#    password:
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+
+springdoc:
+  enable-hateoas: false
+  swagger-ui:
+    path: /api-docs/
+
+jwt:
+  secret: w5QFSuP4WkGSoI0Mo5K2hA7VBvZn5W0j1yTptt2Y64g=
+de:
+  flapdoodle:
+    mongodb:
+      embedded:
+        version: 5.0.5
+
