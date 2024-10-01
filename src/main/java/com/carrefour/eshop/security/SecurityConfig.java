@@ -51,7 +51,9 @@ public class SecurityConfig {
   public AuthenticationWebFilter jwtAuthenticationWebFilter() {
     AuthenticationWebFilter jwtFilter = new AuthenticationWebFilter(authenticationManager());
     jwtFilter.setServerAuthenticationConverter(new JwtServerAuthenticationConverter()); // Use custom converter
-    jwtFilter.setRequiresAuthenticationMatcher(ServerWebExchangeMatchers.pathMatchers("/products/**", "/carts/**", "orders/**")); // Apply to API endpoints only
+    jwtFilter.setRequiresAuthenticationMatcher(ServerWebExchangeMatchers.pathMatchers("/api/v1/products/**",
+        "/api/v1/carts/**",
+        "/api/v1/orders/**")); // Apply to API endpoints only
     return jwtFilter;
   }
 

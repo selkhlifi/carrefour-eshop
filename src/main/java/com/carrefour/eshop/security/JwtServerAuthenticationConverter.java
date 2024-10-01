@@ -15,7 +15,7 @@ public class JwtServerAuthenticationConverter implements ServerAuthenticationCon
     return Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("Authorization"))
         .filter(authHeader -> StringUtils.hasText(authHeader) && authHeader.startsWith(BEARER_PREFIX))
         .map(authHeader -> authHeader.substring(BEARER_PREFIX.length())) // Remove "Bearer " prefix
-        .map(JwtAuthenticationToken::new); // Create a JwtAuthenticationToken with the extracted token
+        .map(JwtAuthenticationToken::new);
   }
 }
 
