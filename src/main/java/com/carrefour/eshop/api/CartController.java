@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/carts/current")
+@RequestMapping("/api/v1/carts/current")
 public class CartController {
 
   private final CartService cartService;

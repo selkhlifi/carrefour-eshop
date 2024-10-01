@@ -37,7 +37,8 @@ public class SecurityConfig {
 
   private void customizeAuthorizeExchange(ServerHttpSecurity.AuthorizeExchangeSpec authorizeExchangeSpec) {
     authorizeExchangeSpec
-        .pathMatchers("/auth/**").permitAll()  // Allow authentication endpoints without token
+        .pathMatchers("/api/v1/auth/**").permitAll()  // Allow authentication endpoints without token
+        .pathMatchers("/api-docs/**", "/api-docs/webjars/swagger-ui/**", "/v3/api-docs/**").permitAll()  // Allow authentication endpoints without token
         .anyExchange().authenticated(); // Other endpoints require authentication
   }
 
